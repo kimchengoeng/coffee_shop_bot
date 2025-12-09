@@ -12,10 +12,10 @@ import lombok.Data;
 @Service
 @Data
 public class MyTelegramBot {
-	@Value("${bot.token}")  // Changed from ${token}
+	@Value("${token}")  // Changed from ${token}
 	private String token;
 	
-	@Value("${telegram.chat-id}")  // Changed from ${chat_id}
+	@Value("${chat-id}")  // Changed from ${chat_id}
 	private long chat_id;
 
 	private TelegramBot bot;

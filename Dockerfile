@@ -5,6 +5,6 @@ RUN gradle build --no-daemon -x test
 
 FROM eclipse-temurin:21-jre
 WORKDIR /app
-COPY --from=build /app/build/libs/*.war app.war
+COPY build/libs/*.jar app.war
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.war"]
