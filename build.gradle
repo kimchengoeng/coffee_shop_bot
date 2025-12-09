@@ -26,23 +26,36 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	compileOnly 'org.projectlombok:lombok'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	runtimeOnly 'com.mysql:mysql-connector-j'
-	annotationProcessor 'org.projectlombok:lombok'
-	runtimeOnly 'org.springframework.boot:spring-boot-starter-tomcat'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-	implementation("com.github.pengrad:java-telegram-bot-api:9.2.1")
-    implementation 'me.paulschwarz:spring-dotenv:4.0.0'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'mysql:mysql-connector-java:8.0.33'
     
-    // Add PostgreSQL:
-    //implementation 'org.postgresql:postgresql'
+    //  Spring Boot Core
+    implementation 'org.springframework.boot:spring-boot-starter'
+
+    //  Spring Boot Web (REST / Controllers)
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    //  Spring Data JPA (REQUIRED for @Entity, JpaRepository)
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+    //  MySQL Driver (REQUIRED for database)
+    runtimeOnly 'com.mysql:mysql-connector-j'
+
+    //  Lombok (REQUIRED for getters/setters/constructors)
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    //  Telegram Bot API
+    implementation 'com.github.pengrad:java-telegram-bot-api:9.2.1'
+
+    //  JSON parser
+    implementation 'com.google.code.gson:gson:2.11.0'
+
+    //  Testing
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    
+    //postgressql
+    implementation 'org.postgresql:postgresql:42.7.3'
 }
 
 tasks.named('test') {
