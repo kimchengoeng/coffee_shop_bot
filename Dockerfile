@@ -1,14 +1,12 @@
-# Use a lightweight OpenJDK image
-FROM eclipse-temurin:21-jdk-alpine
-
-# Set working directory in container
+# Build stage
+FROM eclipse-temurin:21-jdk-alpine AS build
 WORKDIR /app
+COPY . .
+RUN chmod +x gradlew && ./gradlew bootJar --no-daemon
 
-# Copy the Spring Boot jar to container
-COPY build/libs/coffee-shop-html-telegram-bot-1.0.0.jar app.jar
-
-# Expose port 8080 (Spring Boot default)
+# Runtime stage  
+FROM eclipse-temurin:21-jdk-alpine
+WORKDIR /app
+COPY --from=build /app/build/libs/*.jar app.jar
 EXPOSE 8080
-
-# Run the jar file
 ENTRYPOINT ["java", "-jar", "app.jar"]
